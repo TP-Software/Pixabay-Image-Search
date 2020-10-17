@@ -14,5 +14,15 @@ class SearchBarDelegateHandler: NSObject, UISearchBarDelegate {
     init(viewModel: SearchViewModel) {
         self.viewModel = viewModel
     }
-
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("Search Text ::\(String(describing: searchBar.text))")
+        searchBar.endEditing(true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            viewModel.clearData()
+        }
+    }
 }

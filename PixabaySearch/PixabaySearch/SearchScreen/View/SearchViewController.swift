@@ -27,8 +27,17 @@ class SearchViewController: UIViewController {
         
         searchBarView.delegate = searchBarDelegateHandler
         viewModel.searchText <~ searchBarView.searchTextField.reactive.continuousTextValues
+        
+        setupBindings()
+    }
+    
+    private func setupBindings() {
+        viewModel.isDataLoaded.producer
+            .filter { $0 }
+            .observe(on: UIScheduler())
+            .startWithValues { [weak self] _ in
+                self?.imagesCollectionView.reloadData()
+            }
     }
 
-
 }
-

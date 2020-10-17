@@ -15,12 +15,29 @@ class ImagesCollectionDelegateHandler: NSObject, UICollectionViewDelegate, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        viewModel.photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        UICollectionViewCell()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionViewCell", for: indexPath) as! ImageCollectionViewCell
+         cell.configureCell(cellViewModel: viewModel.photos[indexPath.row])
+        return cell
     }
-    
+}
 
+extension ImagesCollectionDelegateHandler: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let isIpad = UIDevice.current.userInterfaceIdiom == .pad
+        let cellSpacing = isIpad ? 50 : 20
+        let width = CGFloat((Int(collectionView.bounds.size.width) - cellSpacing) / (isIpad ? 6 : 3))
+        return CGSize(width: width, height: width)
+    }
+}
+
+extension ImagesCollectionDelegateHandler: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if viewModel.shouldPaginate.value == false, (scrollView.contentOffset.y + scrollView.frame.size.height) >= (scrollView.contentSize.height * (2/3)) {
+            viewModel.shouldPaginate.value = true
+        }
+    }
 }

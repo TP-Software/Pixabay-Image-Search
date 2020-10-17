@@ -52,6 +52,9 @@
                                                 <constraint firstAttribute="trailing" secondItem="HWm-6b-UoY" secondAttribute="trailing" id="n4y-2t-UHE"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageView" destination="HWm-6b-UoY" id="QLg-7T-Fus"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>

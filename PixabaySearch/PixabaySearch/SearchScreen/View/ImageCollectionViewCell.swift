@@ -8,5 +8,21 @@
 import UIKit
 
 class ImageCollectionViewCell: UICollectionViewCell {
+    @IBOutlet private var imageView: UIImageView!
     
+    override func prepareForReuse() {
+        imageView.image = nil
+    }
+    
+    func configureCell(cellViewModel: SearchCellViewModel) {
+        cellViewModel.getImage { image in
+            DispatchQueue.main.async { [weak self] in
+                self?.imageView.image = image
+            }
+        }
+    }
+    
+    deinit {
+        print("Deinit :: ImageCollectionViewCell")
+    }
 }
