@@ -1,7 +1,0 @@
-version: "Apple Swift version 5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)"
-options: "0e79bf3341c990117c0363e18cbcc1d4"
-build_time: [1602904804, 919790000]
-inputs:
-  "/Users/tusharpatil/Documents/TP-Git/Pixabay-Image-Search/PixabaySearch/PixabaySearch/ViewController.swift": [1602904798, 585671234]
-  "/Users/tusharpatil/Documents/TP-Git/Pixabay-Image-Search/PixabaySearch/PixabaySearch/AppDelegate.swift": [1602904798, 572962638]
-  "/Users/tusharpatil/Documents/TP-Git/Pixabay-Image-Search/PixabaySearch/PixabaySearch/SceneDelegate.swift": [1602904798, 583578310]
