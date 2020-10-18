@@ -4,6 +4,7 @@
   1. Xcode Version: Xcode 12
   2. Swift Version:  Swift 5.3
   3. Deployment Target: iOS 14
+  4. Use Project File: PixabaySearch.xcworkspace
 
 * NOTE: 
 1. Tested only on iOS 14 Simulators (iPhone/iPad)
