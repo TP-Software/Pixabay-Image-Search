@@ -1,1 +1,4 @@
 Build/
+*.xcbkptlist
+*.xcuserstate
+PixabaySearch/PixabaySearch.xcodeproj/project.xcworkspace/xcuserdata/tusharpatil.xcuserdatad/UserInterfaceState.xcuserstate
