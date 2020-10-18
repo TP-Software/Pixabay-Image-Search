@@ -16,7 +16,6 @@ class SearchBarDelegateHandler: NSObject, UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("Search Text ::\(String(describing: searchBar.text))")
         searchBar.endEditing(true)
     }
     

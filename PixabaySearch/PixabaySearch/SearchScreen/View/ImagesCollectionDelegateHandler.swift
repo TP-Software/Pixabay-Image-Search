@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import ReactiveSwift
 
 class ImagesCollectionDelegateHandler: NSObject, UICollectionViewDelegate, UICollectionViewDataSource {
     let viewModel: SearchViewModel
+    let selectedImageAtIndex: MutableProperty<Int?> = MutableProperty<Int?>(nil)
     
     init(viewModel: SearchViewModel) {
         self.viewModel = viewModel
@@ -22,6 +24,10 @@ class ImagesCollectionDelegateHandler: NSObject, UICollectionViewDelegate, UICol
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionViewCell", for: indexPath) as! ImageCollectionViewCell
          cell.configureCell(cellViewModel: viewModel.photos[indexPath.row])
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedImageAtIndex.value = indexPath.row
     }
 }
 

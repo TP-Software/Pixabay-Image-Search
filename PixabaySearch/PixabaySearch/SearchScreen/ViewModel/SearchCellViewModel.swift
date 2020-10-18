@@ -6,6 +6,11 @@
 //
 import UIKit
 
+enum ImageType {
+    case preview
+    case large
+}
+
 final class SearchCellViewModel {
     private let photo: Photo
     private let imageLoader = ImageLoader()
@@ -14,8 +19,9 @@ final class SearchCellViewModel {
         self.photo = photo
     }
     
-    func getImage(closure: @escaping ((UIImage) -> Void)) {
-        imageLoader.loadImage(photoUrl: photo.previewURL, closure: closure)
+    func getImage(imageType: ImageType, closure: @escaping ((UIImage) -> Void)) {
+        let photoUrl = imageType == .preview ? photo.previewURL : photo.largeImageURL
+        imageLoader.loadImage(photoUrl: photoUrl, closure: closure)
     }
 
     func cancelRequest() {

@@ -15,7 +15,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
     }
     
     func configureCell(cellViewModel: SearchCellViewModel) {
-        cellViewModel.getImage { image in
+        cellViewModel.getImage(imageType: .preview) { image in
             DispatchQueue.main.async { [weak self] in
                 self?.imageView.image = image
             }

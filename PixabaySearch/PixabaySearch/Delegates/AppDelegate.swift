@@ -17,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ImageStorageManager.storageType = .nsCache
         return true
     }
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        UIDevice.current.userInterfaceIdiom == .pad ? .landscape : .portrait
+    }
 
 }
 

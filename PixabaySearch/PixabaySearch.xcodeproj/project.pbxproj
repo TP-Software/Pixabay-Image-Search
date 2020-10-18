@@ -30,6 +30,8 @@
 		857C54EB253AD1AD00E92FA5 /* SearchCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857C54EA253AD1AD00E92FA5 /* SearchCellViewModel.swift */; };
 		857C54F0253AD8A600E92FA5 /* ImageStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857C54EF253AD8A600E92FA5 /* ImageStorageManager.swift */; };
 		857C54F5253AE10000E92FA5 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857C54F4253AE10000E92FA5 /* ImageLoader.swift */; };
+		857C54FD253B2DA200E92FA5 /* SearchRecentsDelegateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857C54FC253B2DA200E92FA5 /* SearchRecentsDelegateHandler.swift */; };
+		857C5503253C0F4A00E92FA5 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857C5502253C0F4A00E92FA5 /* DetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +94,8 @@
 		857C54EA253AD1AD00E92FA5 /* SearchCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCellViewModel.swift; sourceTree = "<group>"; };
 		857C54EF253AD8A600E92FA5 /* ImageStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStorageManager.swift; sourceTree = "<group>"; };
 		857C54F4253AE10000E92FA5 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		857C54FC253B2DA200E92FA5 /* SearchRecentsDelegateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRecentsDelegateHandler.swift; sourceTree = "<group>"; };
+		857C5502253C0F4A00E92FA5 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +202,7 @@
 		855DCB42253AA23400B80648 /* DetailsScreen */ = {
 			isa = PBXGroup;
 			children = (
+				857C5502253C0F4A00E92FA5 /* DetailsViewController.swift */,
 			);
 			path = DetailsScreen;
 			sourceTree = "<group>";
@@ -209,6 +214,7 @@
 				855DCB4B253AA47500B80648 /* ImagesCollectionDelegateHandler.swift */,
 				855DCB50253AA4DE00B80648 /* ImageCollectionViewCell.swift */,
 				855DCB5F253AAD0F00B80648 /* SearchBarDelegateHandler.swift */,
+				857C54FC253B2DA200E92FA5 /* SearchRecentsDelegateHandler.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -417,12 +423,14 @@
 				855DCB0B253A9A5E00B80648 /* SearchViewController.swift in Sources */,
 				855DCB56253AA60400B80648 /* SearchViewModel.swift in Sources */,
 				857C54E7253ACDDD00E92FA5 /* SearchNetworkDao.swift in Sources */,
+				857C54FD253B2DA200E92FA5 /* SearchRecentsDelegateHandler.swift in Sources */,
 				857C54F0253AD8A600E92FA5 /* ImageStorageManager.swift in Sources */,
 				855DCB07253A9A5E00B80648 /* AppDelegate.swift in Sources */,
 				857C54DF253ACB3D00E92FA5 /* Photo.swift in Sources */,
 				857C54E3253ACD9D00E92FA5 /* SearchDataDao.swift in Sources */,
 				857C54DB253ACAEF00E92FA5 /* PhotosResponse.swift in Sources */,
 				857C54D5253ABBD500E92FA5 /* NetworkManager.swift in Sources */,
+				857C5503253C0F4A00E92FA5 /* DetailsViewController.swift in Sources */,
 				855DCB60253AAD0F00B80648 /* SearchBarDelegateHandler.swift in Sources */,
 				855DCB51253AA4DE00B80648 /* ImageCollectionViewCell.swift in Sources */,
 				857C54EB253AD1AD00E92FA5 /* SearchCellViewModel.swift in Sources */,
