@@ -51,6 +51,15 @@ final class SearchViewController: UIViewController {
         searchRecentsTableView.isHidden = false
         searchRecentsTableView.reloadData()
     }
+    
+    private func displayNoResultAlert() {
+        let title = "No image found for '\(viewModel.searchText.value)'"
+        let message = "Please try different keyword"
+        let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okButtonAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        alertViewController.addAction(okButtonAction)
+        present(alertViewController, animated: true, completion: nil)
+    }
 }
 
 //MARK: Reactive Bindings
@@ -79,6 +88,14 @@ private extension SearchViewController {
             .observe(on: UIScheduler())
             .startWithValues { [weak self] _ in
                 self?.displayRecentsData()
+            }
+        
+        viewModel.isEmptyResponse.producer
+            .filter { $0 }
+            .observe(on: UIScheduler())
+            .startWithResult { [weak self] _ in
+                self?.displayNoResultAlert()
+                self?.searchBarView.searchTextField.text = ""
             }
     }
     

@@ -22,8 +22,4 @@ final class SearchCellViewModel {
     func cancelRequest() {
         imageLoader.cancelRequest()
     }
-    
-    deinit {
-        print("Deinit :: SearchCellViewModel")
-    }
 }

@@ -13,6 +13,7 @@ final class SearchViewModel {
     let isDataLoaded: MutableProperty<Bool> = MutableProperty<Bool>(false)
     let searchText: MutableProperty<String> = MutableProperty<String>("")
     let shouldPaginate: MutableProperty<Bool> = MutableProperty<Bool>(false)
+    let isEmptyResponse: MutableProperty<Bool> = MutableProperty<Bool>(false)
     
     private let dataDao = SearchDataDao()
     private var isRequestInProgress = false
@@ -32,7 +33,7 @@ final class SearchViewModel {
     
     private func setupBindings() {
         searchText.producer
-            .throttle(0.5, on: QueueScheduler())
+            .throttle(1, on: QueueScheduler())
             .skipRepeats()
             .filter { $0.isValid() }
             .startWithValues { [weak self] value in
@@ -80,11 +81,14 @@ final class SearchViewModel {
             if let strongSelf = self {
                 if strongSelf.page == 1 {
                     strongSelf.photos = dataArray
+                    strongSelf.isEmptyResponse.value = dataArray.isEmpty
                 } else {
                     strongSelf.photos.append(contentsOf: dataArray)
                 }
                 strongSelf.isDataLoaded.value = true
-                strongSelf.searchRecents.insert(element: query)
+                if !strongSelf.isEmptyResponse.value {
+                    strongSelf.searchRecents.insert(element: query)
+                }
                 UserDefaults.standard.setObject(self?.searchRecents, forKey: SearchViewModel.SearchRecentListKey)
             }
         }

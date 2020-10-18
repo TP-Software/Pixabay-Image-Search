@@ -34,8 +34,4 @@ final class ImageLoader {
     func cancelRequest() {
         networkManager?.cancelRequest()
     }
-    
-    deinit {
-        print("Deinit :: ImageLoader")
-    }
 }

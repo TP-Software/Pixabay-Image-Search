@@ -11,7 +11,7 @@ final class JsonApiHandler: IApiHandler {
     private var task: URLSessionTask?
     private var isCancelled = false
     
-    enum RequestUrl {
+    private enum RequestUrl {
         private static let ApiKey: String = "18733249-64b3f4574ceffbd2cc4399aab"
         
         case imagesData(page: Int, query: String)
@@ -30,7 +30,7 @@ final class JsonApiHandler: IApiHandler {
     }
     
     func requestData(page: Int, query: String, completion: @escaping (Result<PhotosResponse, Error>?) -> Void)  {
-        let urlSession = URLSession.shared
+        let urlSession = URLSession(configuration: .default)
         guard let url = RequestUrl.imagesData(page: page, query: query).url else {
             completion(Result.failure(NSError(domain: "Empty Query/Url not found", code: 1, userInfo: nil)))
             return
@@ -55,7 +55,7 @@ final class JsonApiHandler: IApiHandler {
     }
     
     func downloadImage(photoUrl: String, completion: @escaping (Result<Data, Error>?) -> Void)  {
-        let urlSession = URLSession.shared
+        let urlSession = URLSession(configuration: .default)
         
         guard let url = RequestUrl.imageDownload(url: photoUrl).url else {
             completion(Result.failure(NSError(domain: "Url not found", code: 1, userInfo: nil)))

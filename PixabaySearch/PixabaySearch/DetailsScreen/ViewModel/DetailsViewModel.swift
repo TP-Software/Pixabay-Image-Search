@@ -7,21 +7,12 @@
 
 import UIKit
 
-class DetailsViewModel {
-    let cellViewModels: [SearchCellViewModel]
-    var selectedIndex: Int
+final class DetailsViewModel {
+    private let cellViewModels: [SearchCellViewModel]
+    private var selectedIndex: Int
     
     init(cellViewModels: [SearchCellViewModel], index: Int) {
         self.cellViewModels = cellViewModels
-        selectedIndex = index
-    }
-    
-    
-    func getSelectedIndex() -> Int {
-        selectedIndex
-    }
-    
-    func setSelectedIndex(index: Int) {
         selectedIndex = index
     }
     
@@ -29,12 +20,12 @@ class DetailsViewModel {
         cellViewModels[selectedIndex]
     }
     
-    func decrementSelectedIndex()  {
-        selectedIndex -= 1
-    }
-    
     func incrementSelectedIndex()  {
         selectedIndex += 1
+    }
+    
+    func decrementSelectedIndex()  {
+        selectedIndex -= 1
     }
     
     func isFirstImageDisplayed() -> Bool {

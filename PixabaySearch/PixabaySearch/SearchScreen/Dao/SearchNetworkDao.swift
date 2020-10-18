@@ -17,8 +17,4 @@ final class SearchNetworkDao: ISearchDao {
         networkManager?.cancelRequest()
         networkManager = nil
     }
-    
-    deinit {
-        print("Deinit :: SearchNetworkDao")
-    }
 }

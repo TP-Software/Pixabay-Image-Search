@@ -20,8 +20,4 @@ final class SearchDataDao {
     func cancelRequest() {
         dataDao.cancelRequest()
     }
-    
-    deinit {
-        print("Deinit :: SearchDataDao")
-    }
 }

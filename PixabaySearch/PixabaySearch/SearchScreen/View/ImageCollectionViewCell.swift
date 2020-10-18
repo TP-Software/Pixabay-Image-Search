@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ImageCollectionViewCell: UICollectionViewCell {
+final class ImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet private var imageView: UIImageView!
     
     override func prepareForReuse() {
@@ -20,9 +20,5 @@ class ImageCollectionViewCell: UICollectionViewCell {
                 self?.imageView.image = image
             }
         }
-    }
-    
-    deinit {
-        print("Deinit :: ImageCollectionViewCell")
     }
 }
