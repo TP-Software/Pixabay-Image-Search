@@ -9,7 +9,7 @@ import UIKit
 import ReactiveCocoa
 import ReactiveSwift
 
-class SearchViewController: UIViewController {
+final class SearchViewController: UIViewController {
 
     @IBOutlet private var searchRecentsTableView: UITableView!
     @IBOutlet private var searchBarView: UISearchBar!
@@ -22,6 +22,11 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initialiseDelegates()
+        setupBindings()
+    }
+    
+    private func initialiseDelegates() {
         imagesCollectionDelegateHandler = ImagesCollectionDelegateHandler(viewModel: viewModel)
         searchBarDelegateHandler = SearchBarDelegateHandler(viewModel: viewModel)
         searchRecentsDelegateHandler = SearchRecentsDelegateHandler(viewModel: viewModel)
@@ -33,11 +38,32 @@ class SearchViewController: UIViewController {
         searchRecentsTableView.dataSource = searchRecentsDelegateHandler
         
         searchBarView.delegate = searchBarDelegateHandler
-        viewModel.searchText <~ searchBarView.searchTextField.reactive.continuousTextValues
-        setupBindings()
     }
     
-    private func setupBindings() {
+    private func displayImagesData() {
+        imagesCollectionView.isHidden = false
+        searchRecentsTableView.isHidden = true
+        imagesCollectionView.reloadData()
+    }
+    
+    private func displayRecentsData() {
+        imagesCollectionView.isHidden = true
+        searchRecentsTableView.isHidden = false
+        searchRecentsTableView.reloadData()
+    }
+}
+
+//MARK: Reactive Bindings
+private extension SearchViewController {
+    func setupBindings() {
+        setupViewModelBindings()
+        setupSearchBarBindings()
+        setupImagesCollectionBinding()
+    }
+    
+    func setupViewModelBindings() {
+        viewModel.searchText <~ searchBarView.searchTextField.reactive.continuousTextValues
+        
         viewModel.isDataLoaded.producer
             .filter { $0 }
             .observe(on: UIScheduler())
@@ -54,13 +80,15 @@ class SearchViewController: UIViewController {
             .startWithValues { [weak self] _ in
                 self?.displayRecentsData()
             }
-        
+    }
+    
+    func setupSearchBarBindings() {
         searchBarView.reactive.textDidBeginEditing.producer
             .observe(on: UIScheduler())
             .startWithResult { [weak self] _ in
                 self?.displayRecentsData()
             }
-            
+        
         searchBarView.reactive.textDidEndEditing.producer
             .observe(on: UIScheduler())
             .startWithResult { [weak self] _ in
@@ -76,31 +104,20 @@ class SearchViewController: UIViewController {
                 self?.searchBarView.searchTextField.resignFirstResponder()
                 self?.displayImagesData()
             }
-        
+    }
+    
+    func setupImagesCollectionBinding() {
         imagesCollectionDelegateHandler?.selectedImageAtIndex.producer
             .filter { $0 != nil }
             .observe(on: UIScheduler())
             .startWithValues { [weak self] selectedIndex in
                 if let strongSelf = self,
                    let detailsViewController = strongSelf.storyboard?.instantiateViewController(identifier: "DetailsViewController") as? DetailsViewController {
-                    detailsViewController.cellViewModels = strongSelf.viewModel.photos
-                    detailsViewController.selectedIndex = selectedIndex!
+                    detailsViewController.viewModel = DetailsViewModel(cellViewModels: strongSelf.viewModel.photos, index: selectedIndex!)
                     detailsViewController.modalTransitionStyle = .coverVertical
                     detailsViewController.modalPresentationStyle = .pageSheet
                     strongSelf.present(detailsViewController, animated: true, completion: nil)
                 }
             }
-    }
-    
-    private func displayImagesData() {
-        imagesCollectionView.isHidden = false
-        searchRecentsTableView.isHidden = true
-        imagesCollectionView.reloadData()
-    }
-    
-    private func displayRecentsData() {
-        imagesCollectionView.isHidden = true
-        searchRecentsTableView.isHidden = false
-        searchRecentsTableView.reloadData()
     }
 }

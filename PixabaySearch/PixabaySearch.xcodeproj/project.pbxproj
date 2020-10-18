@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8525A6C9253C3AD2000A95E9 /* JsonApiHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8525A6C8253C3AD1000A95E9 /* JsonApiHandler.swift */; };
+		8525A6D1253C3C8E000A95E9 /* IApiHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8525A6D0253C3C8E000A95E9 /* IApiHandler.swift */; };
+		8525A6D5253C3CCF000A95E9 /* ApiResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8525A6D4253C3CCF000A95E9 /* ApiResponseType.swift */; };
+		8525A6D9253C3D11000A95E9 /* StorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8525A6D8253C3D11000A95E9 /* StorageType.swift */; };
+		8525A6DD253C3D2E000A95E9 /* ImageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8525A6DC253C3D2E000A95E9 /* ImageStorage.swift */; };
+		8525A6E1253C3D6B000A95E9 /* NSCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8525A6E0253C3D6B000A95E9 /* NSCacheManager.swift */; };
+		8525A6E5253C3FA4000A95E9 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8525A6E4253C3FA4000A95E9 /* DetailsViewModel.swift */; };
 		855DCB07253A9A5E00B80648 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855DCB06253A9A5E00B80648 /* AppDelegate.swift */; };
 		855DCB0B253A9A5E00B80648 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855DCB0A253A9A5E00B80648 /* SearchViewController.swift */; };
 		855DCB0E253A9A5E00B80648 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 855DCB0C253A9A5E00B80648 /* Main.storyboard */; };
@@ -67,6 +74,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8525A6C8253C3AD1000A95E9 /* JsonApiHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonApiHandler.swift; sourceTree = "<group>"; };
+		8525A6D0253C3C8E000A95E9 /* IApiHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IApiHandler.swift; sourceTree = "<group>"; };
+		8525A6D4253C3CCF000A95E9 /* ApiResponseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponseType.swift; sourceTree = "<group>"; };
+		8525A6D8253C3D11000A95E9 /* StorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageType.swift; sourceTree = "<group>"; };
+		8525A6DC253C3D2E000A95E9 /* ImageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStorage.swift; sourceTree = "<group>"; };
+		8525A6E0253C3D6B000A95E9 /* NSCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCacheManager.swift; sourceTree = "<group>"; };
+		8525A6E4253C3FA4000A95E9 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		855DCB03253A9A5E00B80648 /* PixabaySearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PixabaySearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		855DCB06253A9A5E00B80648 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		855DCB0A253A9A5E00B80648 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +139,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8525A6C6253C3A65000A95E9 /* DelegateHandlers */ = {
+			isa = PBXGroup;
+			children = (
+				855DCB4B253AA47500B80648 /* ImagesCollectionDelegateHandler.swift */,
+				855DCB5F253AAD0F00B80648 /* SearchBarDelegateHandler.swift */,
+				857C54FC253B2DA200E92FA5 /* SearchRecentsDelegateHandler.swift */,
+			);
+			path = DelegateHandlers;
+			sourceTree = "<group>";
+		};
+		8525A6CE253C3C6A000A95E9 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				8525A6D4253C3CCF000A95E9 /* ApiResponseType.swift */,
+				8525A6D8253C3D11000A95E9 /* StorageType.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		8525A6CF253C3C72000A95E9 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				8525A6D0253C3C8E000A95E9 /* IApiHandler.swift */,
+				8525A6DC253C3D2E000A95E9 /* ImageStorage.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		8525A6E8253C4D77000A95E9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				857C5502253C0F4A00E92FA5 /* DetailsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8525A6E9253C4D80000A95E9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8525A6E4253C3FA4000A95E9 /* DetailsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		855DCAFA253A9A5E00B80648 = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +207,8 @@
 		855DCB05253A9A5E00B80648 /* PixabaySearch */ = {
 			isa = PBXGroup;
 			children = (
+				8525A6CF253C3C72000A95E9 /* Protocols */,
+				8525A6CE253C3C6A000A95E9 /* Enums */,
 				857C54F3253AE0E400E92FA5 /* ImageUtils */,
 				857C54EE253AD86200E92FA5 /* ImageStorageManager */,
 				857C54D3253ABB8900E92FA5 /* NetworkManager */,
@@ -202,7 +262,8 @@
 		855DCB42253AA23400B80648 /* DetailsScreen */ = {
 			isa = PBXGroup;
 			children = (
-				857C5502253C0F4A00E92FA5 /* DetailsViewController.swift */,
+				8525A6E9253C4D80000A95E9 /* ViewModel */,
+				8525A6E8253C4D77000A95E9 /* View */,
 			);
 			path = DetailsScreen;
 			sourceTree = "<group>";
@@ -210,11 +271,9 @@
 		855DCB43253AA25A00B80648 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8525A6C6253C3A65000A95E9 /* DelegateHandlers */,
 				855DCB0A253A9A5E00B80648 /* SearchViewController.swift */,
-				855DCB4B253AA47500B80648 /* ImagesCollectionDelegateHandler.swift */,
 				855DCB50253AA4DE00B80648 /* ImageCollectionViewCell.swift */,
-				855DCB5F253AAD0F00B80648 /* SearchBarDelegateHandler.swift */,
-				857C54FC253B2DA200E92FA5 /* SearchRecentsDelegateHandler.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -268,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				857C54D4253ABBD500E92FA5 /* NetworkManager.swift */,
+				8525A6C8253C3AD1000A95E9 /* JsonApiHandler.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -276,6 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				857C54EF253AD8A600E92FA5 /* ImageStorageManager.swift */,
+				8525A6E0253C3D6B000A95E9 /* NSCacheManager.swift */,
 			);
 			path = ImageStorageManager;
 			sourceTree = "<group>";
@@ -420,17 +481,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				857C54F5253AE10000E92FA5 /* ImageLoader.swift in Sources */,
+				8525A6DD253C3D2E000A95E9 /* ImageStorage.swift in Sources */,
 				855DCB0B253A9A5E00B80648 /* SearchViewController.swift in Sources */,
+				8525A6E1253C3D6B000A95E9 /* NSCacheManager.swift in Sources */,
 				855DCB56253AA60400B80648 /* SearchViewModel.swift in Sources */,
 				857C54E7253ACDDD00E92FA5 /* SearchNetworkDao.swift in Sources */,
 				857C54FD253B2DA200E92FA5 /* SearchRecentsDelegateHandler.swift in Sources */,
+				8525A6D1253C3C8E000A95E9 /* IApiHandler.swift in Sources */,
 				857C54F0253AD8A600E92FA5 /* ImageStorageManager.swift in Sources */,
 				855DCB07253A9A5E00B80648 /* AppDelegate.swift in Sources */,
+				8525A6E5253C3FA4000A95E9 /* DetailsViewModel.swift in Sources */,
 				857C54DF253ACB3D00E92FA5 /* Photo.swift in Sources */,
 				857C54E3253ACD9D00E92FA5 /* SearchDataDao.swift in Sources */,
 				857C54DB253ACAEF00E92FA5 /* PhotosResponse.swift in Sources */,
 				857C54D5253ABBD500E92FA5 /* NetworkManager.swift in Sources */,
+				8525A6C9253C3AD2000A95E9 /* JsonApiHandler.swift in Sources */,
 				857C5503253C0F4A00E92FA5 /* DetailsViewController.swift in Sources */,
+				8525A6D5253C3CCF000A95E9 /* ApiResponseType.swift in Sources */,
+				8525A6D9253C3D11000A95E9 /* StorageType.swift in Sources */,
 				855DCB60253AAD0F00B80648 /* SearchBarDelegateHandler.swift in Sources */,
 				855DCB51253AA4DE00B80648 /* ImageCollectionViewCell.swift in Sources */,
 				857C54EB253AD1AD00E92FA5 /* SearchCellViewModel.swift in Sources */,
