@@ -15,7 +15,6 @@ final class NetworkManager {
         guard let type = NetworkManager.apiResponseType else {
             return nil
         }
-        //TODO: May be we can try to use Factory method design pattern
         apiHandler = type == ApiResponseType.json ? JsonApiHandler() : nil
     }
     

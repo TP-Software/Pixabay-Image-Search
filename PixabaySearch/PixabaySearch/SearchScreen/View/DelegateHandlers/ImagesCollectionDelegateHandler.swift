@@ -8,14 +8,19 @@
 import UIKit
 import ReactiveSwift
 
-class ImagesCollectionDelegateHandler: NSObject, UICollectionViewDelegate, UICollectionViewDataSource {
+final class ImagesCollectionDelegateHandler: NSObject {
     let viewModel: SearchViewModel
     let selectedImageAtIndex: MutableProperty<Int?> = MutableProperty<Int?>(nil)
     
     init(viewModel: SearchViewModel) {
         self.viewModel = viewModel
     }
-    
+}
+
+//MARK: CollectionView Delegate Methods
+extension ImagesCollectionDelegateHandler: UICollectionViewDelegate,
+                                           UICollectionViewDataSource,
+                                           UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.photos.count
     }
@@ -29,9 +34,7 @@ class ImagesCollectionDelegateHandler: NSObject, UICollectionViewDelegate, UICol
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedImageAtIndex.value = indexPath.row
     }
-}
-
-extension ImagesCollectionDelegateHandler: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let isIpad = UIDevice.current.userInterfaceIdiom == .pad
         let cellSpacing = isIpad ? 50 : 20
@@ -40,6 +43,7 @@ extension ImagesCollectionDelegateHandler: UICollectionViewDelegateFlowLayout {
     }
 }
 
+//MARK: ScrollView Delegate Methods
 extension ImagesCollectionDelegateHandler: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if viewModel.shouldPaginate.value == false, (scrollView.contentOffset.y + scrollView.frame.size.height) >= (scrollView.contentSize.height * (2/3)) {

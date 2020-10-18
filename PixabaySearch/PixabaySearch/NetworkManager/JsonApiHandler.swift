@@ -38,10 +38,8 @@ final class JsonApiHandler: IApiHandler {
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             self?.task = urlSession.dataTask(with: url) { [weak self] data, _, error in
                 guard self?.isCancelled == false else {
-                    print("JsonApiHandler :: requestData :: request cancelled for data url = \(url.absoluteString)")
                     return
                 }
-                print("JsonApiHandler :: requestData :: request active for data url = \(url.absoluteString)")
                 guard let data = data else {
                     completion(Result.failure(NSError(domain: error.debugDescription, code: 2, userInfo: nil)))
                     return
@@ -52,7 +50,6 @@ final class JsonApiHandler: IApiHandler {
                 }
                 completion(.success(photos))
             }
-            print("JsonApiHandler :: requestData :: Starting request for data url = \(url.absoluteString)")
             self?.task?.resume()
         }
     }
@@ -68,23 +65,19 @@ final class JsonApiHandler: IApiHandler {
         DispatchQueue.global(qos: .userInteractive).async { [weak self] in
             self?.task = urlSession.dataTask(with: url) { [weak self] data, _, error in
                 guard self?.isCancelled == false else {
-                    print("JsonApiHandler :: downloadImage :: request cancelled for image url = \(url.absoluteString)")
                     return
                 }
-                print("JsonApiHandler :: downloadImage :: request active for image url = \(url.absoluteString)")
                 guard let data = data else {
                     completion(Result.failure(NSError(domain: error.debugDescription, code: 2, userInfo: nil)))
                     return
                 }
                 completion(.success(data))
             }
-            print("JsonApiHandler :: downloadImage :: Starting request for image url = \(url.absoluteString)")
             self?.task?.resume()
         }
     }
     
     func cancelRequest() {
-        print("JsonApiHandler :: cancelRequest :: Cancelling request = \(String(describing: task?.currentRequest?.debugDescription))")
         task?.cancel()
         isCancelled = true
     }

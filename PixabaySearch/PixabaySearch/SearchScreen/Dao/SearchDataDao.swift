@@ -5,11 +5,6 @@
 //  Created by Tushar Patil on 17/10/20.
 //
 
-protocol ISearchDao {
-    func requestData(page: Int, query: String, completion: @escaping (Result<PhotosResponse, Error>?) -> Void)
-    func cancelRequest()
-}
-
 final class SearchDataDao {
     static var externalDao: ISearchDao?
     private let dataDao: ISearchDao

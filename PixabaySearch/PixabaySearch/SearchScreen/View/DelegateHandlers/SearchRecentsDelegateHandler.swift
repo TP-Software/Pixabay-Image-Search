@@ -8,7 +8,7 @@
 import UIKit
 import ReactiveSwift
 
-class SearchRecentsDelegateHandler: NSObject, UITableViewDelegate, UITableViewDataSource {
+final class SearchRecentsDelegateHandler: NSObject, UITableViewDelegate, UITableViewDataSource {
     let viewModel: SearchViewModel
     let recentSelected: MutableProperty<String> = MutableProperty<String>("")
     

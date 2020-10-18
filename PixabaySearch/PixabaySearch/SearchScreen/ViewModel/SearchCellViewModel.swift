@@ -6,11 +6,6 @@
 //
 import UIKit
 
-enum ImageType {
-    case preview
-    case large
-}
-
 final class SearchCellViewModel {
     private let photo: Photo
     private let imageLoader = ImageLoader()

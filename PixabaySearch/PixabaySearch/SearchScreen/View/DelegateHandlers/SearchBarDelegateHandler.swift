@@ -8,7 +8,7 @@
 import UIKit
 import ReactiveCocoa
 
-class SearchBarDelegateHandler: NSObject, UISearchBarDelegate {
+final class SearchBarDelegateHandler: NSObject, UISearchBarDelegate {
     let viewModel: SearchViewModel
     
     init(viewModel: SearchViewModel) {

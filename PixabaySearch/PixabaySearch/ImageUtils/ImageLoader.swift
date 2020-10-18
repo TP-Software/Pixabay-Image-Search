@@ -11,7 +11,6 @@ final class ImageLoader {
     
     func loadImage(photoUrl: String, closure: @escaping ((UIImage) -> Void)) {
         if let image = ImageStorageManager.get(imageUrl: photoUrl) {
-            print("ImageLoader :: Used from cache for url = \(photoUrl)")
             closure(image)
         } else {
             networkManager = NetworkManager()
@@ -21,7 +20,6 @@ final class ImageLoader {
                     if let uiImage = UIImage(data: data) {
                         closure(uiImage)
                         ImageStorageManager.add(imageUrl: photoUrl, image: uiImage)
-                        print("ImageLoader :: Downloaded from server for url = \(photoUrl)")
                         return
                     }
                 default:

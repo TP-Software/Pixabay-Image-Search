@@ -8,56 +8,22 @@
 import Foundation
 import ReactiveSwift
 
-typealias CompareSave = Equatable & Codable
-struct CustomArray<T: CompareSave>: Codable {
-    let maxSize: Int
-    var elements: [T] = []
-    
-    mutating func insert(element: T) {
-        removeIfExist(element: element)
-        if elements.count >= maxSize {
-            remove()
-        }
-        elements.insert(element, at: 0)
-    }
-    
-    private mutating func remove() {
-        elements.removeLast()
-    }
-    
-    private mutating func removeIfExist(element: T) {
-        if let index = elements.firstIndex(where: { $0 == element }) {
-            elements.remove(at: index)
-        }
-    }
-    
-    var count: Int {
-        elements.count
-    }
-    
-    subscript(index: Int) -> T {
-        get {
-            elements[index]
-        }
-    }
-}
-
-class SearchViewModel {
+final class SearchViewModel {
+    //Mutable Properties
     let isDataLoaded: MutableProperty<Bool> = MutableProperty<Bool>(false)
     let searchText: MutableProperty<String> = MutableProperty<String>("")
     let shouldPaginate: MutableProperty<Bool> = MutableProperty<Bool>(false)
-    let dataDao = SearchDataDao()
-    var isRequestInProgress = false
     
-    var totalHits: Int = 0
-    var page: Int = 0
+    private let dataDao = SearchDataDao()
+    private var isRequestInProgress = false
+    private var totalHits: Int = 0
+    private var page: Int = 0
     var photos: [SearchCellViewModel] = []
     var searchRecents: CustomArray<String> = CustomArray<String>(maxSize: 10)
     
     private static let SearchRecentListKey = "SearchRecentList"
     
     init() {
-        NetworkManager.apiResponseType = .json
         setupBindings()
         if let recentList = UserDefaults.standard.getObject(forKey: SearchViewModel.SearchRecentListKey, castTo: CustomArray<String>.self) {
             searchRecents = recentList
@@ -83,7 +49,7 @@ class SearchViewModel {
             }
     }
     
-    func loadData(query: String) {
+    private func loadData(query: String) {
         guard !isRequestInProgress else {
             return
         }
@@ -93,18 +59,7 @@ class SearchViewModel {
             dataDao.requestData(page: page, query: query.trimmedText) { [weak self] result in
                 switch result {
                 case let .success(photosResponse):
-                    self?.totalHits = photosResponse.totalHits
-                    let dataArray = photosResponse.hits.compactMap { SearchCellViewModel(photo: $0) }
-                    DispatchQueue.main.async { [weak self] in
-                        if self?.page == 1 {
-                            self?.photos = dataArray
-                        } else {
-                            self?.photos.append(contentsOf: dataArray)
-                        }
-                        self?.isDataLoaded.value = true
-                        self?.searchRecents.insert(element: query)
-                        UserDefaults.standard.setObject(self?.searchRecents, forKey: SearchViewModel.SearchRecentListKey)
-                    }
+                    self?.handleSuccessResponse(query: query, photosResponse: photosResponse)
                 case .none:
                     print("NONE")
                 case let .failure(error):
@@ -114,6 +69,23 @@ class SearchViewModel {
                     self?.isRequestInProgress = false
                     self?.shouldPaginate.value = false
                 }
+            }
+        }
+    }
+    
+    private func handleSuccessResponse(query: String, photosResponse: PhotosResponse) {
+        totalHits = photosResponse.totalHits
+        let dataArray = photosResponse.hits.compactMap { SearchCellViewModel(photo: $0) }
+        DispatchQueue.main.async { [weak self] in
+            if let strongSelf = self {
+                if strongSelf.page == 1 {
+                    strongSelf.photos = dataArray
+                } else {
+                    strongSelf.photos.append(contentsOf: dataArray)
+                }
+                strongSelf.isDataLoaded.value = true
+                strongSelf.searchRecents.insert(element: query)
+                UserDefaults.standard.setObject(self?.searchRecents, forKey: SearchViewModel.SearchRecentListKey)
             }
         }
     }
@@ -128,34 +100,9 @@ class SearchViewModel {
         }
     }
     
-    func reset() {
+    private func reset() {
         page = 0
         totalHits = 0
         isRequestInProgress = false
-    }
-}
-
-private extension String {
-    var trimmedText: String {
-        trimmingCharacters(in: .whitespacesAndNewlines)
-    }
-    
-    func isValid() -> Bool {
-        return !self.trimmedText.isEmpty
-    }
-}
-
-extension UserDefaults {
-    func setObject<T>(_ object: T?, forKey: String) where T: Encodable {
-        let encoder = JSONEncoder()
-        if let obj = object, let data = try? encoder.encode(obj) {
-            set(data, forKey: forKey)
-        }
-    }
-    
-    func getObject<T>(forKey: String, castTo: T.Type) -> T? where T: Decodable {
-        guard let data = data(forKey: forKey) else { return nil }
-        let decoder = JSONDecoder()
-        return try? decoder.decode(castTo, from: data)
     }
 }
