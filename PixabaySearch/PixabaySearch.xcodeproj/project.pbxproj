@@ -29,10 +29,6 @@
 		855DCB51253AA4DE00B80648 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855DCB50253AA4DE00B80648 /* ImageCollectionViewCell.swift */; };
 		855DCB56253AA60400B80648 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855DCB55253AA60400B80648 /* SearchViewModel.swift */; };
 		855DCB60253AAD0F00B80648 /* SearchBarDelegateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855DCB5F253AAD0F00B80648 /* SearchBarDelegateHandler.swift */; };
-		855DCB67253AAF6100B80648 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 855DCB65253AAF6100B80648 /* ReactiveSwift.framework */; };
-		855DCB68253AAF6100B80648 /* ReactiveSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 855DCB65253AAF6100B80648 /* ReactiveSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		855DCB69253AAF6100B80648 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 855DCB66253AAF6100B80648 /* ReactiveCocoa.framework */; };
-		855DCB6A253AAF6100B80648 /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 855DCB66253AAF6100B80648 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		857C54D5253ABBD500E92FA5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857C54D4253ABBD500E92FA5 /* NetworkManager.swift */; };
 		857C54DB253ACAEF00E92FA5 /* PhotosResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857C54DA253ACAEF00E92FA5 /* PhotosResponse.swift */; };
 		857C54DF253ACB3D00E92FA5 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857C54DE253ACB3D00E92FA5 /* Photo.swift */; };
@@ -43,6 +39,7 @@
 		857C54F5253AE10000E92FA5 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857C54F4253AE10000E92FA5 /* ImageLoader.swift */; };
 		857C54FD253B2DA200E92FA5 /* SearchRecentsDelegateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857C54FC253B2DA200E92FA5 /* SearchRecentsDelegateHandler.swift */; };
 		857C5503253C0F4A00E92FA5 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857C5502253C0F4A00E92FA5 /* DetailsViewController.swift */; };
+		EE3183BB087A67DCBE498E13 /* Pods_PixabaySearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7D277629A8E7F2731056CBA /* Pods_PixabaySearch.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,21 +58,6 @@
 			remoteInfo = PixabaySearch;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		855DCB6B253AAF6100B80648 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				855DCB68253AAF6100B80648 /* ReactiveSwift.framework in Embed Frameworks */,
-				855DCB6A253AAF6100B80648 /* ReactiveCocoa.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8525A6C8253C3AD1000A95E9 /* JsonApiHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonApiHandler.swift; sourceTree = "<group>"; };
@@ -118,6 +100,9 @@
 		857C54F4253AE10000E92FA5 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		857C54FC253B2DA200E92FA5 /* SearchRecentsDelegateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRecentsDelegateHandler.swift; sourceTree = "<group>"; };
 		857C5502253C0F4A00E92FA5 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		AB5CE096D2BB9D27044BC248 /* Pods-PixabaySearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PixabaySearch.release.xcconfig"; path = "Target Support Files/Pods-PixabaySearch/Pods-PixabaySearch.release.xcconfig"; sourceTree = "<group>"; };
+		C7D277629A8E7F2731056CBA /* Pods_PixabaySearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PixabaySearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF8CB88BA0DCB21CC0676ED5 /* Pods-PixabaySearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PixabaySearch.debug.xcconfig"; path = "Target Support Files/Pods-PixabaySearch/Pods-PixabaySearch.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,8 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				855DCB67253AAF6100B80648 /* ReactiveSwift.framework in Frameworks */,
-				855DCB69253AAF6100B80648 /* ReactiveCocoa.framework in Frameworks */,
+				EE3183BB087A67DCBE498E13 /* Pods_PixabaySearch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +131,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C6E803FECA03077A7C7424A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CF8CB88BA0DCB21CC0676ED5 /* Pods-PixabaySearch.debug.xcconfig */,
+				AB5CE096D2BB9D27044BC248 /* Pods-PixabaySearch.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		8525A6C6253C3A65000A95E9 /* DelegateHandlers */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +211,7 @@
 				855DCB27253A9A6000B80648 /* PixabaySearchUITests */,
 				855DCB04253A9A5E00B80648 /* Products */,
 				855DCB64253AAF6100B80648 /* Frameworks */,
+				5C6E803FECA03077A7C7424A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -347,6 +342,7 @@
 			children = (
 				855DCB66253AAF6100B80648 /* ReactiveCocoa.framework */,
 				855DCB65253AAF6100B80648 /* ReactiveSwift.framework */,
+				C7D277629A8E7F2731056CBA /* Pods_PixabaySearch.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -384,10 +380,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 855DCB2D253A9A6000B80648 /* Build configuration list for PBXNativeTarget "PixabaySearch" */;
 			buildPhases = (
+				2D06CF11A097B7207FE7BBA3 /* [CP] Check Pods Manifest.lock */,
 				855DCAFF253A9A5E00B80648 /* Sources */,
 				855DCB00253A9A5E00B80648 /* Frameworks */,
 				855DCB01253A9A5E00B80648 /* Resources */,
-				855DCB6B253AAF6100B80648 /* Embed Frameworks */,
+				663684FA4F501F2D1D936E44 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -502,6 +499,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2D06CF11A097B7207FE7BBA3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PixabaySearch-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		663684FA4F501F2D1D936E44 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PixabaySearch/Pods-PixabaySearch-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PixabaySearch/Pods-PixabaySearch-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PixabaySearch/Pods-PixabaySearch-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		855DCAFF253A9A5E00B80648 /* Sources */ = {
@@ -707,6 +746,7 @@
 		};
 		855DCB2E253A9A6000B80648 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF8CB88BA0DCB21CC0676ED5 /* Pods-PixabaySearch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -729,6 +769,7 @@
 		};
 		855DCB2F253A9A6000B80648 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB5CE096D2BB9D27044BC248 /* Pods-PixabaySearch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

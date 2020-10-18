@@ -1,0 +1,7 @@
+platform :ios, '10.0'
+use_frameworks!
+
+target 'PixabaySearch' do
+  pod 'ReactiveCocoa', '~> 10.1'
+  pod 'ReactiveSwift', '~> 6.1'
+end
